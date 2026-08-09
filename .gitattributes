@@ -1,0 +1,3 @@
+*.c linguist-generated=true
+*.lst linguist-generated=true
+*.csv linguist-generated=true
