@@ -1,0 +1,68 @@
+address,name,kind,comment
+0x00002984,Reset_Handler,function,Reset entry from the vector table; LKS32 Cortex-M0 application startup.
+0x000028C0,armcc_runtime_entry,function,ARMCC reset-time runtime and scatter-loading entry reached after SystemInit.
+0x000028C8,armcc_scatterload_dispatcher,function,ARMCC scatter-load dispatcher reached from the reset-time runtime entry.
+0x0000292C,application_entry,function,Application entry reached after scatter loading; initializes and enters the cooperative scheduler.
+0x00008780,system_init_set_vtor,function,SystemInit stage that relocates SCB VTOR to the application vector table at 0x2800.
+0x00005040,regional_or_hardware_init,function,Provisional behavior name; called by the main scheduler during initialization.
+0x000051AC,controller_init_stage,function,Provisional initialization routine called by the scheduler.
+0x000063B0,cruise_control_state_update,function,Periodic cruise-control state machine; identity validated by scheduler cross-reference.
+0x000067AC,ride_mode_and_speed_target_update,function,Periodic mode and target-speed update; modes 1 2 3 and 11 observed.
+0x00006AE8,kick_start_state_update,function,Uses signed wheel speed and two hysteresis thresholds.
+0x00008794,speed_variant_config_init,function,Parses the five-digit product or variant identifier and builds the speed profile.
+0x000091CC,uart_command_parser,function,Large UART packet parser handling command families 0x51 0x52 and 0x53.
+0x0000A5EC,main_scheduler_loop,function,Main cooperative scheduler with modulo 5 10 100 and 250 task counters.
+0x000069FC,pedestrian_speed_immediate,data,Probable mode 0x0B target-speed immediate; stock instruction movs r0 62.
+0x00006B00,kick_start_lower_threshold,data,Lower kick-start hysteresis threshold; stock 30 or 3.0 km per hour in x10 units.
+0x00006B10,kick_start_upper_threshold,data,Upper kick-start activation threshold; stock 50 or 5.0 km per hour in x10 units.
+0x000063E8,cruise_variant_restriction,data,Variant comparison block removed by the existing cruise-control patch.
+0x000087EE,drive_speed_load_patch_site,data,Stock movs r5 203; patcher replaces it with a literal load.
+0x000087F2,sport_speed_load_patch_site,data,Stock movs r1 253; patcher replaces it with a literal load.
+0x0000880E,restricted_profile_skip_branch,data,Must be patched together with the D and S literals because those literals overwrite skipped code.
+0x00008810,drive_speed_literal_slot,data,Dead-code slot reused for the patched 32-bit D speed value.
+0x00008814,sport_speed_literal_slot,data,Dead-code slot reused for the patched 32-bit S speed value.
+0x0000931A,cruise_enabled_uart_bit,data,Existing patch replaces bit extraction with movs r1 1.
+0x0000AD73,reported_firmware_version,data,ASCII 0015 inside the ok/version/error response string; this is data not code.
+0x2000000C,variant_info_base,data,Provisional RAM label.
+0x20000010,parsed_variant_id,data,Parsed five-digit product or variant identifier.
+0x20000140,ride_mode_status,data,Provisional mode or status field written by UART parsing.
+0x20000158,kick_or_cruise_state,data,Provisional shared state field.
+0x20000161,cruise_enabled_setting,data,Incoming UART setting bit forced to one by the cruise enable patch.
+0x20000196,signed_wheel_speed_x10,data,Signed wheel speed used by kick-start logic.
+0x2000019A,speed_target_related,data,Provisional speed or target value.
+0x200001C0,target_mode_structure,data,Provisional target and mode structure.
+0x2000024D,ascii_variant_id,data,Five ASCII digits consumed by speed_variant_config_init.
+0x200003A8,speed_profile_config,data,Profile containing stock D 203 and S 253 values plus other limits.
+0x200004F0,uart_tx_area,data,Approximate UART transmit area; boundary is provisional.
+0x200005FA,uart_rx_area,data,Approximate UART receive area; boundary is provisional.
+0x00020000,LKS_FLASH_registers,data,Linko flash-controller register block from the official LKS32MC07x SVD.
+0x40000000,LKS_SYS,data,Linko system-control peripheral base.
+0x40010000,LKS_SPI0,data,Linko SPI0 peripheral base.
+0x40010100,LKS_I2C0,data,Linko I2C0 peripheral base.
+0x40010200,LKS_CMP,data,Linko comparator peripheral base.
+0x40010300,LKS_HALL0,data,Linko Hall interface peripheral base.
+0x40010400,LKS_ADC0,data,Linko ADC0 peripheral base.
+0x40010500,LKS_ADC1,data,Linko ADC1 peripheral base.
+0x40010600,LKS_TIMER0,data,Linko TIMER0 peripheral base.
+0x40010700,LKS_TIMER1,data,Linko TIMER1 peripheral base.
+0x40010800,LKS_TIMER2,data,Linko TIMER2 peripheral base.
+0x40010900,LKS_TIMER3,data,Linko TIMER3 peripheral base.
+0x40010A00,LKS_QEP0,data,Linko QEP0 peripheral base.
+0x40010B00,LKS_QEP1,data,Linko QEP1 peripheral base.
+0x40010C00,LKS_MCPWM0,data,Linko motor-control PWM peripheral base.
+0x40010D00,LKS_GPIO0,data,Linko GPIO0 peripheral base.
+0x40010D40,LKS_GPIO1,data,Linko GPIO1 peripheral base.
+0x40010D80,LKS_GPIO2,data,Linko GPIO2 peripheral base.
+0x40010DC0,LKS_GPIO3,data,Linko GPIO3 peripheral base.
+0x40010E00,LKS_EXTI,data,Linko external-interrupt peripheral base.
+0x40010F00,LKS_CRC0,data,Linko hardware CRC peripheral base.
+0x40011000,LKS_UART0,data,Linko UART0 peripheral base.
+0x40011100,LKS_UART1,data,Linko UART1 peripheral base.
+0x40011200,LKS_DMA0,data,Linko DMA0 peripheral base.
+0x40011300,LKS_CAN0,data,Linko CAN0 peripheral base.
+0x40011500,LKS_SIF0,data,Linko SIF0 peripheral base.
+0x40011700,LKS_IWDG,data,Linko independent-watchdog peripheral base.
+0x40011720,LKS_AON,data,Linko always-on peripheral base.
+0x40011800,LKS_CL0,data,Linko CL0 peripheral base.
+0x40012000,LKS_DSP0,data,Linko DSP accelerator peripheral base.
+0xE000ED08,SCB_VTOR,data,Arm System Control Block vector-table offset register.
