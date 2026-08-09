@@ -1,0 +1,8 @@
+*.bin
+*.enc
+*.elf
+*.o
+*.gpr
+*.rep/
+__pycache__/
+*.pyc
