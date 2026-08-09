@@ -1,0 +1,18 @@
+address,name,kind,comment
+0x08003148,armcc_runtime_entry,function,ARMCC reset-time runtime entry; sets the stack and starts scatter loading before the application entry.
+0x08003150,application_entry_thunk,function,Four-byte veneer that branches through a literal to the application entry at 0x0801907A.
+0x0800315C,Reset_Handler,function,Reset entry from the vector table; ARMCC-style startup.
+0x080034C4,armcc_scatterload_dispatcher,function,ARMCC scatter-load dispatcher reached by the runtime entry and backed by records near 0x0801AD28.
+0x080031DA,armcc_memset_wrapper,function,Exact byte match against the symbol-rich official Linko ARMCC reference image.
+0x08009D6C,vfp_control_routine_08009d6c,function,Reachable routine with VFP register save and hardware floating-point operations; exact behavior is not yet named.
+0x08013CB4,system_init_enable_fpu,function,Reached from reset and enables CP10 and CP11 through SCB CPACR at 0xE000ED88.
+0x08018158,armcc_scatterload_copy,function,ARMCC scatter-loader copy routine identified by exact-byte reference matching.
+0x08018168,armcc_scatterload_zeroinit,function,ARMCC scatter-loader zero-init routine identified by exact-byte reference matching.
+0x0801907A,application_entry,function,Application entry reached by the ARMCC runtime startup after scatter loading.
+0x0801B224,candidate_ff_cave_start,data,Start of a 1500-byte stock FF run; candidate only until all references and updater write coverage are proven.
+0x40010800,primary_gpioa_compatible_base,data,Observed GPIOA-compatible peripheral base; exact primary silicon remains unproven.
+0x40010C00,primary_gpiob_compatible_base,data,Observed GPIOB-compatible peripheral base; exact primary silicon remains unproven.
+0x40013800,primary_usart1_compatible_base,data,Observed USART1-compatible peripheral base; exact primary silicon remains unproven.
+0x40021000,primary_rcc_compatible_base,data,Observed RCC-compatible peripheral base; exact primary silicon remains unproven.
+0x40022000,primary_flash_control_compatible_base,data,Observed flash-control-compatible peripheral base; exact primary silicon remains unproven.
+0xE000ED88,SCB_CPACR,data,Arm System Control Block coprocessor-access register used to enable CP10 and CP11.
